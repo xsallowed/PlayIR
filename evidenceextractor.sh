@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #sudo apt-get install s3fs
 #mkdir ~/s3-drive
 read -p "Access key ID:" accesskey

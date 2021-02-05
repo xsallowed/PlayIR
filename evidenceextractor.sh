@@ -2,10 +2,10 @@
 
 sudo apt-get install s3fs
 mkdir ~/s3-drive
-read -p "Access key ID : " accesskey
-read -p  "Secret access key : " secretkey
-read -p "Enter S3 bucket name : " bucketname
-read -p "Evidence Folder : " evidencefolder
+read -p "Access key ID:" accesskey
+read -p  "Secret access key: " secretkey
+read -p "Enter S3 bucket name: " bucketname
+read -p "Evidence Folder: " evidencefolder
 echo $accesskey +':'+ $secretkey > ~/.passwd-s3fs
 chmod 600 .passwd-s3fs
 

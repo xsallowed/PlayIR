@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo apt-get install s3fs
-mkdir ~/s3-drive
+#sudo apt-get install s3fs
+#mkdir ~/s3-drive
 read -p "Access key ID:" accesskey
 read -p  "Secret access key: " secretkey
 read -p "Enter S3 bucket name: " bucketname

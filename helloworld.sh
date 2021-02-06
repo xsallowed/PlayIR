@@ -3,7 +3,7 @@
 read -p "Evidence Folder: " evidencefolder
 
 evidencepath="s3drive"
-if ["$evidencefolder"!=""] 
+if ["$evidencefolder!=\n"] 
 then 
 	 evidencepath="$evidencepath"/"$evidencefolder"
 fi

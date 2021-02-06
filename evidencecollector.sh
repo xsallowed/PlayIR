@@ -21,10 +21,10 @@ sudo mkdir output
 
 for evidencefile in ${evidencepath}/*.vmdk
 do
-	hostname=basename $evidencefile .vmdk
-	mkdir "$hostname"
-	7z x $evidencepath/$evidencefile -ooutput/$hostname '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
-	7z a output/"${evidencefile%.*}".zip ./output/"${evidencefile%.*}"/*
+	hostname= "basename $evidencefile .vmdk"
+	mkdir ${%/evidencefile%.*}
+	7z x $evidencefile -ooutput/$hostname '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
+	7z a output/"${%/evidencefile%.*}".zip ./output/"${%/evidencefile%.*}"/*
 	mkdir s3drive/output
 	cp "output/${%/evidencefile%.*}".7z s3drive/output/
 done
@@ -32,6 +32,6 @@ done
 echo "evidence path : $evidencepath"
 echo "host : $hostname"
 echo "Evidence file : $evidencefile"
-echo "Evidence file without extension (hostname2) : ${evidencefile%.*}"
+echo "Evidence file without extension (hostname2) : ${%/evidencefile%.*}
 
 echo "DONE!!!"

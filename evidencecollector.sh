@@ -15,11 +15,12 @@ mkdir output
 #if [[-z"$evidencefolder"]] then 
 #	cd "$evidencefolder"
 #fi
-for f in *.vmdk
+for evidencefile in *.vmdk
 do
-	7z x s3-drive/$f -ooutput/ '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
-	7z a output ./output/*
-	cp output.7z s3-drive/
+	mkdir "${evidencefile%.*}"
+	7z x s3-drive/$evidencefile -ooutput/"${evidencefile%.*}" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
+	7z a output/"${evidencefile%.*}" ./output/"${evidencefile%.*}"/*
+	cp "${evidencefile%.*}".7z s3-drive/
 done
 
 echo "DONE!!!"

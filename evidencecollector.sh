@@ -17,12 +17,14 @@ fi
 
 sudo apt install p7zip-full p7zip-rar
 
-sudo mkdir localoutput
+mkdir localoutput
 
 for evidencefile in "$evidencepath"/*.vmdk
 do
 	hostname=$(basename "$evidencefile" .vmdk)
+	cd localoutput
 	mkdir "$hostname"
+	cd ..
 	7z x "$evidencefile" -olocaloutput/"$hostname" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
 	7z a localoutput/"$hostname.zip" localoutput/"$hostname"/*
 	mkdir s3drive/output

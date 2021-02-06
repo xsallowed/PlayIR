@@ -11,12 +11,12 @@ s3fs $bucketname ~/s3-drive
 
 sudo apt install p7zip-full p7zip-rar
 cd ~/s3-drive
-if $evidencefolder !="" 
+if [!-z "$evidencefolder"] 
     then cd $evidencefolder
 fi
 
 for f in *.vmdk
 do
-	echo "$f"
+	7z x $f -o/output/ '[SYSTEM]/*'
 done
 echo "DONE!!!"

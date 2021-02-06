@@ -28,11 +28,8 @@ do
 	7z x "$evidencefile" -olocaloutput/"$hostname" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
 	7z a localoutput/"$hostname.zip" localoutput/"$hostname"/*
 	mkdir s3drive/output
-	cp "localoutput/$hostname.7z" s3drive/output/
+	cp localoutput/"$hostname.7z" s3drive/output/
 done
 
-echo "evidence path : $evidencepath"
-echo "host : $hostname"
-echo "Evidence file : $evidencefile"
 
-echo "DONE!!!"
+echo "#####  Archive(s) copied to s3 bucket  ########"

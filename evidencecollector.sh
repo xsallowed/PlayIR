@@ -11,7 +11,7 @@ s3fs $bucketname s3drive
 
 evidencepath="s3drive"
 if [[-z"$evidencefolder"]] then 
-	 evidencepath = ${evidencepath}/${evidencefolder}
+	 evidencepath=${evidencepath}/${evidencefolder}
 fi
 
 sudo apt install p7zip-full p7zip-rar
@@ -20,7 +20,7 @@ mkdir output
 
 for evidencefile in ${evidencepath}/*.vmdk
 do
-	hostname = basename ${evidencefile} .vmdk
+	hostname=basename ${evidencefile} .vmdk
 	mkdir $hostname
 	7z x $evidencepath/${evidencefile} -ooutput/${hostname} '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
 	7z a output/"${evidencefile%.*}".zip ./output/"${evidencefile%.*}"/*

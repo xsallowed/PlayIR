@@ -1,3 +1,3 @@
 #!/bin/bash
-read -p "What is your name:" name
-echo "Hello Mr. $name"
+read -p "Enter Access Key:" akey
+echo "Hello Mr. $akey"

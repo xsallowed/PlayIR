@@ -1,3 +1,3 @@
 #!/bin/bash
 read -p "Enter access key: " akey
-echo "{$akey}:"
+echo "access key=$akey"

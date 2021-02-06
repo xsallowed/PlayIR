@@ -17,13 +17,6 @@ fi
 
 for f in *.vmdk
 do
-	7z x $f -o/output/ '[SYSTEM]/*'
-	7z x $f -o/output/ 'Windows/System32/winevt/*'
-	7z x $f -o/output/ 'Users/*'
-	7z x $f -o/output/ 'Windows/System32/config'
-    7z x $f -o/output/ '*/History/*'
-    7z x $f -o/output/ '*/prefetch/*'
-    7z x f$ -o/output/ '*/appcompat/program/*'
-    7z x $f -o/output/ '*etl'
+	echo "$f"
 done
 echo "DONE!!!"

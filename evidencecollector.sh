@@ -30,7 +30,7 @@ do
 done
 
 echo "evidence path : $evidencepath"
-echo "host : $hostname"
+echo "host : ${hostname}"
 echo "Evidence file : $evidencefile"
 
 echo "DONE!!!"

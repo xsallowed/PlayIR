@@ -6,10 +6,10 @@ read -p "Evidence Folder: " evidencefolder
 
 echo "$accesskey:$secretkey" > .passwd-s3fs
 chmod 600 .passwd-s3fs
-mkdir s3-drive
-s3fs $bucketname s3-drive
+mkdir s3drive
+s3fs $bucketname s3drive
 
-evidencepath = "s3-drive"
+evidencepath="s3drive"
 if [[-z"$evidencefolder"]] then 
 	 evidencepath = ${evidencepath}/${evidencefolder}
 fi
@@ -24,7 +24,8 @@ do
 	mkdir $hostname
 	7z x $evidencepath/${evidencefile} -ooutput/${hostname} '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
 	7z a output/"${evidencefile%.*}".zip ./output/"${evidencefile%.*}"/*
-	cp "output/${evidencefile%.*}".7z s3-drive/
+	mkdir s3drive/output
+	cp "output/${evidencefile%.*}".7z s3drive/output/
 done
 
 echo "DONE!!!"

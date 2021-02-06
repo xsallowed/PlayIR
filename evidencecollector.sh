@@ -10,7 +10,7 @@ mkdir s3drive
 s3fs $bucketname s3drive
 
 evidencepath="s3drive"
-if [-z "$evidencefolder"] 
+if [-z "$evidencefolder"]; 
 then 
 	 evidencepath="$evidencepath"/"$evidencefolder"
 fi
@@ -21,7 +21,7 @@ sudo mkdir localoutput
 
 for evidencefile in "$evidencepath"/*.vmdk
 do
-	hostname=basename "$evidencefile" .vmdk
+	hostname=$(basename "$evidencefile" .vmdk)
 	mkdir "$hostname"
 	7z x "$evidencefile" -olocaloutput/"$hostname" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
 	7z a localoutput/"$hostname.zip" localoutput/"$hostname"/*

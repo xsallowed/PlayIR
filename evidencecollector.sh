@@ -17,6 +17,9 @@ mkdir output
 #fi
 for f in *.vmdk
 do
-	7z x s3-drive/$f -ooutput/ '[SYSTEM]/*'
+	7z x s3-drive/$f -ooutput/ '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
+	7z a output ./output/*
+	cp output.7z s3-drive/
 done
+
 echo "DONE!!!"

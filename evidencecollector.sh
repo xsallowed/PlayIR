@@ -28,7 +28,6 @@ do
 	7z x "$evidencefile" -olocaloutput/"$hostname" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
 	7z a localoutput/$hostname.zip localoutput/$hostname/*
 	mkdir s3drive/output
-	currentdirectory=$(pwd)
-	cp $currentdirectory/localoutput/$hostname.7z $currentdirectory/s3drive/output
+	cp localoutput/$hostname.zip s3drive/output
 done
 echo "#####  Archive(s) copied to s3 bucket  ########"

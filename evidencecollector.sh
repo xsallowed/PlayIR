@@ -24,6 +24,7 @@ for evidencefile in "$evidencepath"/*.vmdk
 do
 	hostname=$(basename "$evidencefile" .vmdk | sed -e 's/ /_/g')
 	echo "EXTRACTING FILES FROM : $hostname"
+	echo $evidencefile
 	cd localoutput
 	mkdir $hostname
 	cd ..

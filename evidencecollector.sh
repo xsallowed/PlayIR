@@ -23,12 +23,10 @@ mkdir s3drive/output
 for evidencefile in "$evidencepath/"*.vmdk
 do
 	hostname=$(basename "$evidencefile" .vmdk | sed -e 's/ /_/g')
-	echo "EXTRACTING FILES FROM : $hostname"
-	echo $evidencefile
 	cd localoutput
 	mkdir $hostname
 	cd ..
-	7z x "$evidencefile" -olocaloutput/"$hostname" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
+	7z x s3drive/"$host".vmdk -olocaloutput/"$hostname" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
 	7z a localoutput/$hostname.zip localoutput/$hostname/*
 	cp localoutput/$hostname.zip s3drive/output
 done

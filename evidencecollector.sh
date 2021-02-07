@@ -11,11 +11,11 @@ mkdir s3drive
 s3fs $bucketname s3drive
 
 evidencepath="s3drive"
-if [ -z "$evidencefolder" ] 
+if [ -z "$evidencefolder" ]; 
 then 
 	evidencepath="$evidencepath/$evidencefolder"
 fi
-echo "$evidencepath"
+
 sudo apt install p7zip-full p7zip-rar
 
 mkdir localoutput

@@ -21,13 +21,13 @@ mkdir localoutput
 
 for evidencefile in "$evidencepath"/*.vmdk
 do
-	hostname=$(basename "$evidencefile" .vmdk)
+	hostname=$(basename "$evidencefile" .vmdk | sed -e 's/ /_/g')
 	cd localoutput
-	mkdir ${hostname}
+	mkdir $hostname
 	cd ..
 	7z x "$evidencefile" -olocaloutput/"$hostname" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
 	7z a localoutput/${hostname}.zip localoutput/${hostname}/*
 	mkdir s3drive/output
-	cp localoutput/${hostname}.7z s3drive/output/
+	cp localoutput/$hostname.7z s3drive/output/
 done
 echo "#####  Archive(s) copied to s3 bucket  ########"

@@ -26,7 +26,7 @@ do
 	cd localoutput
 	mkdir $hostname
 	cd ..
-	7z x s3drive/"$host".vmdk -olocaloutput/"$hostname" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
+	7z x s3drive/"$hostname".vmdk -olocaloutput/"$hostname" '[SYSTEM]/*' 'Windows/System32/winevt/*' 'Users/*' 'Windows/System32/config' '*/History/*' '*/prefetch/*' '*/appcompat/program/*' '*etl'
 	7z a localoutput/$hostname.zip localoutput/$hostname/*
 	cp localoutput/$hostname.zip s3drive/output
 done

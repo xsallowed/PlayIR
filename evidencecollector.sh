@@ -20,7 +20,7 @@ sudo apt install p7zip-full p7zip-rar
 
 mkdir localoutput
 mkdir s3drive/output
-for evidencefile in "$evidencepath"/*.vmdk
+for evidencefile in "$evidencepath/"*.vmdk
 do
 	hostname=$(basename "$evidencefile" .vmdk | sed -e 's/ /_/g')
 	echo "EXTRACTING FILES FROM : $hostname"

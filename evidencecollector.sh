@@ -5,6 +5,7 @@ read -p "Enter S3 bucket name: " bucketname
 read -p "Evidence Folder: " evidencefolder
 
 echo "$accesskey:$secretkey" > ~/.passwd-s3fs
+echo "$accesskey:$secretkey" > .passwd-s3fs
 chmod 600 .passwd-s3fs
 mkdir s3drive
 s3fs $bucketname s3drive
